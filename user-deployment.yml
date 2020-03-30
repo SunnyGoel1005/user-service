@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: userservice-deployment
+  labels: 
+    app: userservice
+spec: 
+  replicas: 3
+  selector: 
+    matchLabels:
+      app: userservice-deployment
+  template: 
+    metadata:
+      labels:
+        app: userservice-deployment
+    spec:
+      containers:
+      - env:
+        - name: USER_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: USER_PORT
+              name: user-service-deplyoment-config
+        image: sunnygoel1005/userservice:userupdate
+        imagePullPolicy: Always
+        name: userservice-1
+      imagePullSecrets:
+        - name: registry-secret
+
+        

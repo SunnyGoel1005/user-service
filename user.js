@@ -1,13 +1,13 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.USER_PORT||3000
+
+const fs = require('fs');
+
+let users = fs.readFileSync('users.json');  
+let user = JSON.parse(users);  
 
 app.get('/user/:id', function (req, res) {
-	const user = {
-        "name" : "Sunny Goel",
-        "age" : "26",
-        "email" : "sunny@gmail.com"
-        }
         res.json(user);
 });
 
