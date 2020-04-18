@@ -7,4 +7,7 @@ metadata:
   namespace: default
 data:
   USER_PORT: "3000"
+  DB_SCHEMA: "nagp"
+  DB_USER: "root"
+  DB_HOST: "35.221.222.246"
 
